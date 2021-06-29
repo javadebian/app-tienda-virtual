@@ -1,1 +1,13 @@
-<p>login works!</p>
+<div class="text-center div-background">
+  <form class="form-signin" [formGroup]="form" (ngSubmit)="login($event)">
+    <img class="mb-4" src="./assets/img/tienda-online.svg" alt="" width="200" height="200">
+    <h1 class="h3 mb-3 font-weight-normal">Tienda Virtual</h1>
+    <input type="text" id="inputEmail" class="form-control" placeholder="Ingrese su dni" required autofocus formControlName="dni">
+    <input type="password" id="inputPassword" class="form-control" placeholder="Ingrese su clave" required formControlName="clave">
+    <button class="btn btn-primary btn-block" type="submit" style="width: 100%" [disabled]="form.invalid">Iniciar Sesion</button>
+    <div class="mt-2 alert alert-danger" role="alert" *ngIf="msj != ''">
+      {{msj}}
+    </div>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
+  </form>
+</div>
