@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {environment} from "../../../environments/environment.prod";
-import {Login} from "../models/login.model";
+import {environment} from "../../../../environments/environment.prod";
+import {Login} from "../../models/login.model";
 
 export const headers = new HttpHeaders({
   'Content-Type': 'application/json; charset=utf8'

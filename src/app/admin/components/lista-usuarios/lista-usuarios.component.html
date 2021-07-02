@@ -1,1 +1,62 @@
-<p>lista-usuarios works!</p>
+<form class="row g-3" [formGroup]="form" (ngSubmit)="guardarUsuario($event)">
+  <div class="col-md-4">
+    <label class="form-label">DNI</label>
+    <input type="text" class="form-control" formControlName="dni">
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Nombres</label>
+    <input type="text" class="form-control"  formControlName="nombres">
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Apellidos</label>
+    <input type="text" class="form-control"  placeholder="" formControlName="apellidos">
+  </div>
+  <div class="col-md-4">
+    <label  class="form-label">Email</label>
+    <input type="email" class="form-control"  placeholder="Ingrese su correo electronico" formControlName="email">
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Nro. Celular</label>
+    <input type="text" class="form-control" formControlName="nroCel">
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Fecha Nacimiento</label>
+    <input type="date" class="form-control" formControlName="fechaNac">
+  </div>
+
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">Estado</label>
+    <select id="inputState" class="form-select" formControlName="estado">
+      <option selected>seleccionar item</option>
+      <option>Activo</option>
+      <option>Inactivo</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </div>
+</form>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">DNI</th>
+    <th scope="col">nombres</th>
+    <th scope="col">apellidos</th>
+    <th scope="col">nroCel</th>
+    <th scope="col">email</th>
+    <th scope="col">fechaNac</th>
+    <th scope="col">estado</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of usuarios;index as i">
+    <th scope="row">{{item.dni}}</th>
+    <td>{{item.nombres}}</td>
+    <td>{{item.apellidos}}</td>
+    <td>{{item.email}}</td>
+    <td>{{item.nroCel}}</td>
+    <td>{{item.fechaNac}}</td>
+    <td>{{item.estado}}</td>
+  </tr>
+  </tbody>
+</table>
