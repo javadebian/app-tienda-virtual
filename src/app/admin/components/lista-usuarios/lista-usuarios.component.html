@@ -1,15 +1,15 @@
 <form class="row g-3" [formGroup]="form" (ngSubmit)="guardarUsuario($event)">
   <div class="col-md-4">
     <label class="form-label">DNI</label>
-    <input type="text" class="form-control" formControlName="dni">
+    <input type="text" class="form-control" formControlName="dni" placeholder="Ingrese su dni">
   </div>
   <div class="col-md-4">
     <label class="form-label">Nombres</label>
-    <input type="text" class="form-control"  formControlName="nombres">
+    <input type="text" class="form-control"  formControlName="nombres" placeholder="Ingrse sus nombres">
   </div>
   <div class="col-md-4">
     <label class="form-label">Apellidos</label>
-    <input type="text" class="form-control"  placeholder="" formControlName="apellidos">
+    <input type="text" class="form-control"  placeholder="Ingrese sus apellidos" formControlName="apellidos">
   </div>
   <div class="col-md-4">
     <label  class="form-label">Email</label>
@@ -17,11 +17,11 @@
   </div>
   <div class="col-md-4">
     <label class="form-label">Nro. Celular</label>
-    <input type="text" class="form-control" formControlName="nroCel">
+    <input type="text" class="form-control" formControlName="nroCel" placeholder="Ingrese su nro. celular">
   </div>
   <div class="col-md-4">
     <label class="form-label">Fecha Nacimiento</label>
-    <input type="date" class="form-control" formControlName="fechaNac">
+    <input type="date" class="form-control" formControlName="fechaNac" placeholder="Seleccione una fecha">
   </div>
 
   <div class="col-md-4">
@@ -33,7 +33,10 @@
     </select>
   </div>
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-outline-info" (click)="nuevoUsuario()">Nuevo</button>
+      <button type="submit" class="btn btn-outline-success" [disabled]="form.invalid">Guardar</button>
+    </div>
   </div>
 </form>
 <table class="table">
@@ -46,6 +49,7 @@
     <th scope="col">email</th>
     <th scope="col">fechaNac</th>
     <th scope="col">estado</th>
+    <th scope="col">Acciones</th>
   </tr>
   </thead>
   <tbody>
@@ -57,6 +61,12 @@
     <td>{{item.nroCel}}</td>
     <td>{{item.fechaNac}}</td>
     <td>{{item.estado}}</td>
+    <td>
+      <div class="d-flex justify-content-evenly">
+        <button type="button" class="btn btn-outline-primary" (click)="editarUsuario(item)" >Editar</button>
+        <button type="button" class="btn btn-outline-danger">Eliminar</button>
+      </div>
+    </td>
   </tr>
   </tbody>
 </table>
