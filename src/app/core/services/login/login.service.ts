@@ -19,4 +19,8 @@ export class LoginService {
   loginAdmin(data: Login): Observable<any>{
      return this.http.post<any>(`${environment.url_api}/usuario/login`,data,{headers});
   }
+
+  loginClient(data: Login): Observable<any>{
+    return this.http.post<any>(`${environment.url_api}/cliente/login`,data,{headers});
+  }
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from "@angular/router";
+import {GuiModule} from "../bootstrap/gui.module";
 
 
 
@@ -13,11 +14,13 @@ import { RouterModule } from "@angular/router";
     ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    GuiModule
   ],
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        GuiModule
     ]
 })
 export class SharedModule { }

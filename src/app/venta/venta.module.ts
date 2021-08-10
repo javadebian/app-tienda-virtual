@@ -7,6 +7,8 @@ import { VentaServiciosComponent } from './components/venta-servicios/venta-serv
 import { HomeComponent } from './components/home/home.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import {SharedModule} from "../shared/shared.module";
+import { AdminCientComponent } from './components/admin-cient/admin-cient.component';
+import {GuiModule} from "../bootstrap/gui.module";
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import {SharedModule} from "../shared/shared.module";
     VentaProductosComponent,
     VentaServiciosComponent,
     HomeComponent,
-    CarritoComponent
+    CarritoComponent,
+    AdminCientComponent
   ],
   imports: [
     CommonModule,
     VentaRoutingModule,
-    SharedModule
+    SharedModule,
+    GuiModule
   ]
 })
 export class VentaModule { }

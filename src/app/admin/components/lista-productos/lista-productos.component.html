@@ -1,50 +1,74 @@
-<div class="mb-3">
-  <label for="formFile" class="form-label">Default file input example</label>
-  <input class="form-control" type="file" id="formFile">
-</div>
-<div class="mb-3">
-  <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-  <input class="form-control" type="file" id="formFileMultiple" multiple>
-</div>
-<div class="mb-3">
-  <label for="formFileDisabled" class="form-label">Disabled file input example</label>
-  <input class="form-control" type="file" id="formFileDisabled" disabled>
-</div>
-<div class="mb-3">
-  <label for="formFileSm" class="form-label">Small file input example</label>
-  <input class="form-control form-control-sm" id="formFileSm" type="file">
-</div>
-<div>
-  <label for="formFileLg" class="form-label">Large file input example</label>
-  <input class="form-control form-control-lg" id="formFileLg" type="file">
+<div class="d-flex flex-wrap">
+  <div class="col-md-8">
+    <form class="row g-3" [formGroup]="form" (ngSubmit)="guardarProducto($event)">
+      <div class="col-md-12">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese su nombre">
+      </div>
+      <div class="col-md-12">
+        <label class="form-label">Descripcion</label>
+        <textarea type="text" rows="5" class="form-control"  formControlName="descripcion" placeholder="Ingrse su descripcion">
+    </textarea>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Precio</label>
+        <input type="number"   class="form-control"  formControlName="precio" placeholder="Ingrese un precio">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Stock</label>
+        <input type="number"   class="form-control" formControlName="stock" placeholder="Ingrese el stock">
+      </div>
+      <div class="col-md-4">
+        <label for="inputState1" class="form-label">Tipo</label>
+        <select id="inputState1" class="form-select" formControlName="tipo">
+          <option selected>seleccionar item</option>
+          <option>Bien</option>
+          <option>Servicio</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-outline-info" (click)="nuevoProducto()">Nuevo</button>
+          <button type="submit" class="btn btn-outline-success" [disabled]="form.invalid">Guardar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="showImg" class="col-md-4 p-2">
+    <img [src]="imgFile" width="100%" height="70%" class="rounded-2">
+    <div class="col-md-12 p-2">
+      <input type="file"  class="form-control"
+             placeholder="Seleccione una imagen"
+             (change)="onFileChange($event)">
+    </div>
+  </div>
 </div>
 
 <table class="table">
   <thead>
   <tr>
-    <th scope="col">#</th>
-    <th scope="col">First</th>
-    <th scope="col">Last</th>
-    <th scope="col">Handle</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Descripcion</th>
+    <th scope="col">Precio</th>
+    <th scope="col">stock</th>
+    <th scope="col">Tipo</th>
+    <th scope="col">Acciones</th>
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>@mdo</td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td>Jacob</td>
-    <td>Thornton</td>
-    <td>@fat</td>
-  </tr>
-  <tr>
-    <th scope="row">3</th>
-    <td colspan="2">Larry the Bird</td>
-    <td>@twitter</td>
+  <tr *ngFor="let item of productos;index as i">
+    <th scope="row">{{item.nombre}}</th>
+    <td>{{item.descripcion}}</td>
+    <td>{{item.precio}}</td>
+    <td>{{item.stock}}</td>
+    <td>{{item.tipo}}</td>
+    <td>
+      <div class="d-flex justify-content-evenly">
+        <button type="button" class="btn btn-outline-primary" (click)="editarProducto(item)" >Editar</button>
+        <button type="button" class="btn btn-outline-danger">Eliminar</button>
+      </div>
+    </td>
   </tr>
   </tbody>
 </table>

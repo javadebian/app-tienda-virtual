@@ -41,7 +41,13 @@ export class LoginComponent implements OnInit {
         if(data.valido){
           this.router.navigate(['/admin']);
         }else {
-          this.msj = data.msj;
+          this.loginService.loginClient(this.dataLogin).subscribe( data =>{
+            if(data.valido){
+              this.router.navigate(['/ventas/clients',data.dni]);
+            }else {
+              this.msj = data.msj;
+            }
+          });
         }
       });
     }else {
